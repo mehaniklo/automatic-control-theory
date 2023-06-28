@@ -1,0 +1,275 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8968,        267]
+NotebookOptionsPosition[      8380,        249]
+NotebookOutlinePosition[      8789,        265]
+CellTagsIndexPosition[      8746,        262]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"plant", " ", "parameters"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"a", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"1", ",", 
+         RowBox[{"-", "2"}], ",", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"2", ",", 
+         RowBox[{"-", "3"}], ",", "2"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "2"}], ",", "1", ",", 
+         RowBox[{"-", "4"}]}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"b", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"-", "3"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"-", "1"}], "}"}], ",", 
+       RowBox[{"{", "3", "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"x1", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", "4", "}"}], ",", 
+       RowBox[{"{", "3", "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"-", "3"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"rank", " ", "controllability", " ", "matrix"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"c", "=", 
+     RowBox[{"Join", "[", 
+      RowBox[{"b", ",", 
+       RowBox[{"a", ".", "b"}], ",", 
+       RowBox[{"a", ".", "a", ".", "b"}], ",", "2"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"MatrixRank", "[", "c", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"eigen", " ", "values", " ", "and", " ", "Jordan", " ", "form"}], 
+    " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eVal", "=", 
+     RowBox[{"Eigenvalues", "[", "a", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"eVec", "=", 
+     RowBox[{"Transpose", "[", 
+      RowBox[{"Eigenvectors", "[", "a", "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"aj", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "2"}], ",", "0", ",", "0"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"-", "2"}], ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", 
+         RowBox[{"-", "1"}], ",", 
+         RowBox[{"-", "2"}]}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"m", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"m11", ",", "m12", ",", "m13"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"m21", ",", "m22", ",", "m23"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"m31", ",", "m32", ",", "m33"}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Solve", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"m", ".", "aj"}], "==", 
+       RowBox[{"a", ".", "m"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "m11", ",", "m12", ",", "m13", ",", "m21", ",", "m22", ",", "m23", ",",
+         "m31", ",", "m32", ",", "m33"}], "}"}]}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"m", "=", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "1"}], ",", " ", 
+         RowBox[{
+          RowBox[{"-", "1"}], "/", "3"}], ",", "1"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0", ",", 
+         RowBox[{"2", "/", "3"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"1", ",", "0", ",", 
+         RowBox[{
+          RowBox[{"-", "2"}], "/", "3"}]}], "}"}]}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"bj", "=", 
+     RowBox[{
+      RowBox[{"Inverse", "[", "m", "]"}], ".", "b"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"controllability", " ", "of", " ", "eigen", " ", "values"}], " ", 
+    "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"MatrixRank", "[", 
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"a", "-", 
+        RowBox[{
+         RowBox[{"eVal", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "*", 
+         RowBox[{"IdentityMatrix", "[", "3", "]"}]}]}], ",", "b", ",", "2"}], 
+      "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"MatrixRank", "[", 
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"a", "-", 
+        RowBox[{
+         RowBox[{"eVal", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "*", 
+         RowBox[{"IdentityMatrix", "[", "3", "]"}]}]}], ",", "b", ",", "2"}], 
+      "]"}], "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"MatrixRank", "[", 
+     RowBox[{"Join", "[", 
+      RowBox[{
+       RowBox[{"a", "-", 
+        RowBox[{
+         RowBox[{"eVal", "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "*", 
+         RowBox[{"IdentityMatrix", "[", "3", "]"}]}]}], ",", "b", ",", "2"}], 
+      "]"}], "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"if", " ", "dot", " ", "in", " ", "controlled", " ", "subspace"}],
+     " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"MatrixRank", "[", 
+     RowBox[{"Join", "[", 
+      RowBox[{"controllabilityMatrix", ",", " ", "x1", ",", "2"}], "]"}], 
+     "]"}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"gramian", " ", "and", " ", "its", " ", "eigen", " ", "values"}], 
+    " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"t1", "=", "3"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"g", "=", 
+     RowBox[{"Integrate", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"MatrixExp", "[", 
+         RowBox[{"a", " ", "t"}], "]"}], ".", "b", ".", 
+        RowBox[{"Transpose", "[", "b", "]"}], ".", 
+        RowBox[{"MatrixExp", "[", 
+         RowBox[{"Transpose", "[", 
+          RowBox[{"a", " ", "t"}], "]"}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "0", ",", "t1"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Eigenvalues", "[", "g", "]"}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", "control", " ", "*)"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"FullSimplify", "[", 
+     RowBox[{
+      RowBox[{"Transpose", "[", "b", "]"}], ".", 
+      RowBox[{"MatrixExp", "[", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "a", "]"}], " ", 
+        RowBox[{"(", 
+         RowBox[{"t1", "-", "t"}], ")"}]}], "]"}], ".", 
+      RowBox[{"Inverse", "[", "g", "]"}], ".", "x1"}], "]"}], 
+    ";"}]}]}]], "Input",
+ CellFrame->{{0, 0}, {0, 0}},
+ CellChangeTimes->{{3.8866861510148773`*^9, 3.8866861641647654`*^9}, {
+  3.8866864591684976`*^9, 3.886686492789509*^9}, {3.8866872758342733`*^9, 
+  3.8866872850867014`*^9}},ExpressionUUID->"6f29bb18-7735-4c33-b06e-\
+53974dbdaf78"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Solve", "svars", 
+   "\"Equations may not give solutions for all \\\"solve\\\" variables.\"", 2,
+    124, 7, 22152265558218683538, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{{3.886686034004518*^9, 3.8866860524166164`*^9}, 
+   3.8866861526447396`*^9, 3.886686332216861*^9},
+ CellLabel->
+  "During evaluation of \
+In[115]:=",ExpressionUUID->"e064a183-39fb-46b3-9989-8d2a58c82004"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Solve", "svars", 
+   "\:f3b5Equations may not give solutions for all \"solve\" \
+variables.\:f3b5", 2, 91, 6, 22152265558218683538, "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ GeneratedCell->False,
+ CellAutoOverwrite->False,
+ CellChangeTimes->{{3.886686034004518*^9, 3.8866860524166164`*^9}, 
+   3.8866861526447396`*^9},ExpressionUUID->"b7190dc3-e970-4320-8b78-\
+29bb11b556fe"]
+}, Open  ]]
+},
+WindowSize->{840.75, 987.},
+WindowMargins->{{Automatic, 6.75}, {6.75, Automatic}},
+FrontEndVersion->"13.2 for Microsoft Windows (64-bit) (January 30, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"8ba823a8-a734-48cd-91a9-4653bb2eaf4d"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 6874, 198, 847, "Input",ExpressionUUID->"6f29bb18-7735-4c33-b06e-53974dbdaf78"],
+Cell[7457, 222, 487, 12, 28, "Message",ExpressionUUID->"e064a183-39fb-46b3-9989-8d2a58c82004"],
+Cell[7947, 236, 417, 10, 28, "Message",ExpressionUUID->"b7190dc3-e970-4320-8b78-29bb11b556fe"]
+}, Open  ]]
+}
+]
+*)
+
